@@ -105,4 +105,12 @@ nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
+" tab navigation
+nnoremap <c-Left> :tabprevious<CR>
+nnoremap <c-Right> :tabnext<CR>
 
+" useful shortcuts
+" nerdtree
+nnoremap <c-n> :NERDTreeToggle<cr>
+" GoImports
+nnoremap <c-i> :GoImports<cr>
