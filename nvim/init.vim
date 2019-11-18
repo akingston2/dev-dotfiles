@@ -1,5 +1,8 @@
 call plug#begin(stdpath('data').'/plugged')
 
+Plug 'webdevel/tabulous'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -112,5 +115,15 @@ nnoremap <c-Right> :tabnext<CR>
 " useful shortcuts
 " nerdtree
 nnoremap <c-n> :NERDTreeToggle<cr>
+autocmd VimEnter * NERDTree
 " GoImports
-nnoremap <c-i> :GoImports<cr>
+nnoremap <M-i> :GoImports<cr>
+nnoremap <M-d> :GoDef<cr>
+nnoremap <M-d>t :GoDefType<cr>
+nnoremap <M-j> :GoAddTags json,omitempty<cr>
+nnoremap <M-b> :GoAddTags bson,omitempty<cr>
+nnoremap <M-r> :GoRename<cr>
+nnoremap <M-e> :GoIfErr<cr>
+nnoremap <M-k> :GoKeyify<cr>
+nnoremap <M-o> :GoDecls %:p<cr>
+
