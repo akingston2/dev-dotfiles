@@ -1,13 +1,53 @@
 call plug#begin(stdpath('data').'/plugged')
+" color
+Plug 'ayu-theme/ayu-vim'
 
+" guid control
 Plug 'webdevel/tabulous'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'chrisbra/vim-commentary'
+
+" golang
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+" javascript
+Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 call plug#end()
+
+" javascript helpers
+nnoremap <F5> mzgggqG`z
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType html setlocal formatprg=js-beautify\ --type\ html
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
+
+let g:LanguageClient_serverCommands = { 'javascript': ['javascript-typescript-stdio'] }
+let g:LanguageClient_autoStart = 1
+
+let mapleader=","
+nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
+nnoremap <leader>k :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
+
+
+"---------------------------------------------------------------------------------------------------
+"   " color scheme
+"---------------------------------------------------------------------------------------------------
+set termguicolors 
+let ayucolor="mirage"
+colorscheme ayu
+hi Normal guibg=NONE ctermbg=NONE
 
 " -------------------------------------------------------------------------------------------------
 "  " coc.nvim default settings
