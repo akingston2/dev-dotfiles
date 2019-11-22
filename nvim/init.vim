@@ -26,8 +26,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 
-
-
 let g:palenight_terminal_italics=1
 
 " airline theme
@@ -39,6 +37,16 @@ let g:airline_extensions_tabline_formatter = 'jsformatter'
 let g:airline_extensions_tabline_enabled = 1
 
 let g:tmuxline_theme = 'iceberg'
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'win'    : '#I #W',
+      \'cwin' : '#I #W',
+      \'y'    : '#(date)',
+      \'z'    : '#(echo site5.sp.swarm)'}
 call plug#end()
 
 "---------------------------------------------------------------------------------------------------
@@ -115,9 +123,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
 
 " spaces & tabs
 set tabstop=4       " number of visual spaces per TAB
