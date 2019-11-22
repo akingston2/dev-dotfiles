@@ -1,6 +1,6 @@
 call plug#begin(stdpath('data').'/plugged')
 " color
-Plug 'ayu-theme/ayu-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " guid control
 Plug 'webdevel/tabulous'
@@ -20,36 +20,35 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+
+
+
+let g:palenight_terminal_italics=1
+
+" airline theme
+let g:airline_theme='wombat'
+let g:airline_extensions_branch_enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_extentions_tabline_left_sep = ' '
+let g:airline_extensions_tabline_formatter = 'jsformatter'
+let g:airline_extensions_tabline_enabled = 1
+
+let g:tmuxline_theme = 'iceberg'
 call plug#end()
-
-" javascript helpers
-nnoremap <F5> mzgggqG`z
-au FileType javascript setlocal formatprg=prettier
-au FileType javascript.jsx setlocal formatprg=prettier
-au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-au FileType html setlocal formatprg=js-beautify\ --type\ html
-au FileType scss setlocal formatprg=prettier\ --parser\ css
-au FileType css setlocal formatprg=prettier\ --parser\ css
-
-let g:LanguageClient_serverCommands = { 'javascript': ['javascript-typescript-stdio'] }
-let g:LanguageClient_autoStart = 1
-
-let mapleader=","
-nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
-nnoremap <leader>k :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
-
 
 "---------------------------------------------------------------------------------------------------
 "   " color scheme
 "---------------------------------------------------------------------------------------------------
 set termguicolors 
-let ayucolor="mirage"
-colorscheme ayu
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme palenight
 hi Normal guibg=NONE ctermbg=NONE
 
-" -------------------------------------------------------------------------------------------------
 "  " coc.nvim default settings
 "  -------------------------------------------------------------------------------------------------
 " if hidden is not set, TextEdit might fail.
