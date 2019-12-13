@@ -29,7 +29,7 @@ Plug 'tpope/vim-fugitive'
 let g:palenight_terminal_italics=1
 
 " airline theme
-let g:airline_theme='wombat'
+let g:airline_theme='tomorrow'
 let g:airline_extensions_branch_enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_extentions_tabline_left_sep = ' '
@@ -41,12 +41,12 @@ let g:tmuxline_theme = 'iceberg'
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'win'    : '#I #W',
-      \'cwin' : '#I #W',
-      \'y'    : '#(date)',
-      \'z'    : '#(echo site5.sp.swarm)'}
+      \'a'    : '#{session_name}',
+      \'b'    : '#{client_termname}',
+      \'win'    : ['#I', '#W'],
+      \'cwin' : ['#I','#W', '#F'],
+      \'y'    : ['#(date --date="5 hours ago" "+%H:%M")', '%a', '%Y'],
+      \'z'    : '#(echo dev.sp.swarm)'}
 call plug#end()
 
 "---------------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
+
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -170,4 +170,5 @@ nnoremap <M-r> :GoRename<cr>
 nnoremap <M-e> :GoIfErr<cr>
 nnoremap <M-k> :GoKeyify<cr>
 nnoremap <M-o> :GoDecls %:p<cr>
+
 
