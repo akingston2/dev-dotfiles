@@ -7,7 +7,7 @@ Plug 'webdevel/tabulous'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jiangmiao/auto-pairs'
-Plug 'chrisbra/vim-commentary'
+Plug 'preservim/nerdcommenter'
 
 " golang
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -57,6 +57,15 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme palenight
 hi Normal guibg=NONE ctermbg=NONE
 
+
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 "  " coc.nvim default settings
 "  -------------------------------------------------------------------------------------------------
 " if hidden is not set, TextEdit might fail.
@@ -70,6 +79,8 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+
+let mapleader = ","
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
 " plugin.
@@ -144,7 +155,7 @@ set noswapfile
 " improve esc
 inoremap jk <esc>
 
-
+inoremap <leader><c-R> :so ~/.config/nvim/init.vim
 
 " split navigation
 nnoremap <c-j> <c-w><c-j>
