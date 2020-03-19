@@ -4,7 +4,7 @@ Plug 'arcticicestudio/nord-vim'
 
 " guid control
 Plug 'webdevel/tabulous'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
@@ -21,9 +21,6 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
-let g:go_auto_sameids = 1
-" enable auto linting
-let g:go_metalinter_autosave = 1
 
 
 " javascript
