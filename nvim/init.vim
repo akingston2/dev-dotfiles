@@ -13,6 +13,18 @@ Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'tag': '*' }
+" enable syntax highlighting 
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_auto_sameids = 1
+" enable auto linting
+let g:go_metalinter_autosave = 1
+
 
 " javascript
 Plug 'othree/yajs.vim'
@@ -158,10 +170,10 @@ inoremap jk <esc>
 inoremap <leader><c-R> :so ~/.config/nvim/init.vim
 
 " split navigation
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
+nnoremap <leader>j <c-w><c-j>
+nnoremap <leader>k <c-w><c-k>
+nnoremap <leader>l <c-w><c-l>
+nnoremap <leader>h <c-w><c-h>
 
 " tab navigation
 nnoremap <c-Left> :tabprevious<CR>
@@ -170,7 +182,8 @@ nnoremap <c-Right> :tabnext<CR>
 " useful shortcuts
 " nerdtree
 nnoremap <c-n> :NERDTreeToggle<cr>
-autocmd VimEnter * NERDTree
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+
 " GoImports
 nnoremap <M-i> :GoImports<cr>
 nnoremap <M-d> :GoDef<cr>
@@ -182,4 +195,8 @@ nnoremap <M-e> :GoIfErr<cr>
 nnoremap <M-k> :GoKeyify<cr>
 nnoremap <M-o> :GoDecls %:p<cr>
 
+" set tab size on go files
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
+" execute on saving go files
+autocmd BufWritePost *.go GoImports
