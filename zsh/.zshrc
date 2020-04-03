@@ -5,7 +5,7 @@ export ZSH=$HOME/.config/zsh/oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="sorin"
+ZSH_THEME="rkj-repos"
 ZSH_CUSTOM=$HOME/.config/zsh/oh-my-zsh/custom
 ZSH_COLORIZE_TOOL=chroma
 

@@ -22,6 +22,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 
+" dockerfile syntax
+Plug 'ekalinin/Dockerfile.vim'
 
 " javascript
 Plug 'othree/yajs.vim'
@@ -31,37 +33,19 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 
 " airline
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
-Plug 'tpope/vim-fugitive'
-
-let g:palenight_terminal_italics=1
-
-" airline theme
-let g:airline_theme='nord'
-let g:airline_extensions_branch_enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-let g:airline_extentions_tabline_left_sep = ' '
-let g:airline_extensions_tabline_formatter = 'jsformatter'
-let g:airline_extensions_tabline_enabled = 1
+Plug 'tpope/vim-fugitive'
+let g:airline#extensions#branch#enabled = 1
 
-let g:tmuxline_theme = 'iceberg'
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-let g:tmuxline_preset = {
-      \'a'    : '#{session_name}',
-      \'b'    : '#{client_termname}',
-      \'win'    : ['#I', '#W'],
-      \'cwin' : ['#I','#W', '#F'],
-      \'y'    : ['#(date --date="5 hours ago" "+%H:%M")', '%a', '%Y'],
-      \'z'    : '#(echo dev.sp.swarm)'}
 call plug#end()
 
 "---------------------------------------------------------------------------------------------------
 "   " color scheme
 "---------------------------------------------------------------------------------------------------
-set termguicolors 
+"set termguicolors 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme nord
 hi Normal guibg=NONE ctermbg=NONE
