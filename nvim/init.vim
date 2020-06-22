@@ -1,11 +1,17 @@
 call plug#begin(stdpath('data').'/plugged')
 " color
-Plug 'arcticicestudio/nord-vim'
+"Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
+let g:one_allow_italics = 1
 
 " guid control
 Plug 'webdevel/tabulous'
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_disable_startup_warning = 1
+Plug 'sheerun/vim-polyglot'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 
@@ -18,9 +24,15 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+
+let g:go_version_warning = 0
 
 " dockerfile syntax
 Plug 'ekalinin/Dockerfile.vim'
@@ -33,6 +45,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 
 " airline
 Plug 'vim-airline/vim-airline'
+let g:airline_theme = 'onedark'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -40,15 +53,29 @@ let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 let g:airline#extensions#branch#enabled = 1
 
+" markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
+let g:mkdp_auto_start = 1
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = 'dev.sp.swarm'
+let g:mkdp_echo_preview_url = 1
+let g:mkdp_port = '3000'
+let g:mkdp_page_title = '「${name}」'
+
 call plug#end()
 
 "---------------------------------------------------------------------------------------------------
 "   " color scheme
 "---------------------------------------------------------------------------------------------------
-"set termguicolors 
+
+" set termguicolors 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme nord
+colorscheme onedark
+"set background=dark
+set termguicolors
+set encoding=UTF-8
 hi Normal guibg=NONE ctermbg=NONE
+highlight Comment cterm=italic 
 
 
 :set number relativenumber
