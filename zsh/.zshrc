@@ -8,7 +8,7 @@ export ZSH=$HOME/.config/zsh/oh-my-zsh
 
 #POWERLEVEL9K_MODE='nerdfont-complete'
 #ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_THEME='geometry/geometry'
+ZSH_THEME='avit'
 ZSH_CUSTOM=$HOME/.config/zsh/oh-my-zsh/custom
 ZSH_COLORIZE_TOOL=chroma
 
@@ -39,9 +39,6 @@ TERM=xterm-256color
 
 [ -f ~/.fzf.zsh ] && source $HOME/.fzf.zsh
 clear
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 token() {
   curl -sX POST "http://keycloak:8080/keycloak/auth/realms/IDCS/protocol/openid-connect/token" -H "Content-type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=$1&client_secret=$1" | \
