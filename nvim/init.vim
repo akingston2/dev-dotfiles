@@ -202,9 +202,11 @@ nnoremap <M-r> :GoRename<cr>
 nnoremap <M-e> :GoIfErr<cr>
 nnoremap <M-k> :GoKeyify<cr>
 nnoremap <M-o> :GoDecls %:p<cr>
+nnoremap <M-t> :GoTest<cr>
 
 " set tab size on go files
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+autocmd BufNewFile,BufRead *.js setlocal noexpandtab tabstop=2 shiftwidth=2 
 
 " execute on saving go files
 autocmd BufWritePost *.go GoImports

@@ -35,7 +35,7 @@ TERM=xterm-256color
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
- export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 [ -f ~/.fzf.zsh ] && source $HOME/.fzf.zsh
 clear
@@ -49,3 +49,8 @@ token() {
 
 tmux="tmux -u2"
 vim=nvim
+
+# set up ssh for git
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/github_rsa
+clear
