@@ -52,5 +52,5 @@ vim=nvim
 
 # set up ssh for git
 eval $(ssh-agent -s)
-ssh-add ~/.ssh/github_rsa
+ssh-add /home/project/.ssh/github_rsa
 clear
