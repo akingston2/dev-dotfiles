@@ -1,13 +1,10 @@
 call plug#begin(stdpath('data').'/plugged')
 " color
-"Plug 'arcticicestudio/nord-vim'
-Plug 'joshdick/onedark.vim'
-let g:one_allow_italics = 1
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'preservim/nerdtree'
 
 " guid control
 Plug 'webdevel/tabulous'
-Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 let g:coc_disable_startup_warning = 1
 Plug 'sheerun/vim-polyglot'
@@ -20,13 +17,13 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'tag': '*' }
 " enable syntax highlighting 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_function_parameters = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_diagnostic_errors = 1
@@ -42,25 +39,21 @@ Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-
-" airline
-Plug 'vim-airline/vim-airline'
-let g:airline_theme = 'onedark'
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
-Plug 'tpope/vim-fugitive'
-let g:airline#extensions#branch#enabled = 1
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
-let g:mkdp_auto_start = 1
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = 'dev.sp.swarm'
-let g:mkdp_echo_preview_url = 1
-let g:mkdp_port = '3000'
-let g:mkdp_page_title = '「${name}」'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+" gRPC
+Plug 'dense-analysis/ale'
+Plug 'bufbuild/vim-buf'
+let g:ale_linters = {
+\   'proto': ['buf-lint',],
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
 
 call plug#end()
 
@@ -69,13 +62,16 @@ call plug#end()
 "---------------------------------------------------------------------------------------------------
 
 " set termguicolors 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme onedark
-"set background=dark
-set termguicolors
-set encoding=UTF-8
-hi Normal guibg=NONE ctermbg=NONE
-highlight Comment cterm=italic 
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let g:impact_transbg=1
+colorscheme PaperColor
+set background=light
+"set cursorline
+"set termguicolors
+set t_Co=256
+"set encoding=UTF-8
+"hi Normal guibg=NONE ctermbg=NONE
+"highlight Comment cterm=italic 
 
 
 :set number relativenumber
@@ -210,3 +206,6 @@ autocmd BufNewFile,BufRead *.js setlocal noexpandtab tabstop=2 shiftwidth=2
 
 " execute on saving go files
 autocmd BufWritePost *.go GoImports
+
+" execute on saving js files 
+autocmd BufWritePost *.js,*.gql,*.json,*.html Prettier 
